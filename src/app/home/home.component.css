@@ -1,0 +1,41 @@
+.itemWord {
+    margin: 10dp 15dp 10dp 15dp;
+    border-width: 0.7dp;
+    border-color: rgb(65, 65, 65);
+    padding: 12dp;
+    border-radius: 6%;
+}
+
+.wordFormate {
+    font-size: 15;
+    padding: 5dp 0dp 5dp 0dp;
+    text-transform: capitalize;
+}
+
+.image-size {
+    height: 120dp;
+    padding:10%;
+}
+
+.f-25 {
+    font-size: 23;
+}
+
+.p-r-5 {
+    padding-right: 5dp;
+}
+
+.mdiBottomBarIcons {
+    font-family: "Material Icons", "MaterialIcons-Regular";
+}
+
+.search-bar {
+    background-color: #c5c5c5;
+    padding-left: 14%;
+    padding-right: 14%;
+}
+
+
+.alignIcon {
+    margin-bottom: 6dp;
+}

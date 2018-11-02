@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "895426140366",
+    "firebase_url": "https://fiver17-d01bc.firebaseio.com",
+    "project_id": "fiver17-d01bc",
+    "storage_bucket": "fiver17-d01bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:895426140366:android:e18abf5b18457d77",
+        "android_client_info": {
+          "package_name": "org.nativescript.testingOne"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "895426140366-l6mm9r114ppb9fm1gvaqnqf1ocvjdle9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBX_D_u9gcY__aRfhnwDXYpZkJBblwMtf4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

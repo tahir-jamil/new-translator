@@ -1,0 +1,25 @@
+npm-debug.log
+.DS_Store
+
+*.js.map
+app/**/*.js
+hooks/
+lib/
+node_modules/
+platforms/
+tmp/
+typings/
+report/
+
+# System Files
+.DS_Store
+Thumbs.db
+
+/**/*.js
+/***/*.d.ts
+
+
+package-lock.json
+launch.json
+settings.json
+jsconfig.json
