@@ -3,6 +3,7 @@ import { TNSPlayer } from 'nativescript-audio';
 import { RouterExtensions } from 'nativescript-angular/router';
 const firebase = require("nativescript-plugin-firebase");
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -41,80 +42,23 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit() {
-    firebase.init({
-      persist: true,
-      onAuthStateChanged: function(data) { // optional but useful to immediately re-logon the user when he re-visits your app
-        console.log(data.loggedIn ? "Logged in to firebase" : "Logged out from firebase");
-        if (data.loggedIn) {
-          console.log("user's email address: " + (data.user.email ? data.user.email : "N/A"));
-        }
-      },
-      databaseURL:"/companies/kZuk4wUazvDdUIIjoqOZ"
-    }).then(
-      instance => {
-        console.log("firebase.init done");
-      },
-      error => {
-        console.log(`firebase.init error: ${error}`);
-      }
-    );
+   
   }
 
 
   getData() {
-
-
-
-        firebase.getValue('/companies')
-        .then(result => console.log(JSON.stringify(result)))
-        .catch(error => console.log("Error: " + error));
-        
-
-    
-    // firebase.getCurrentUser()
-    //   .then(user => console.log("User uid: " + user.uid))
-    //   .catch(error => console.log("Trouble in paradise: " + error));
-
-    // firebase.setValue(
-    //   '/companies',
-    //   [
-    //     { name: 'Telerik', country: 'Bulgaria' },
-    //     { name: 'Google', country: 'USA' }
-    //   ]
-    // );
-
-    // firebase.login(
-    //   {
-    //     type: firebase.LoginType.PASSWORD,
-    //     passwordOptions: {
-    //       email: 'neelam@translator.com',
-    //       password: 'neelam123'
-    //     }
-    //   })
-    //   .then(result => 
-    //     {
-    //       JSON.stringify(result);
-    //       firebase.setValue(
-    //         '/companies',
-    //         [
-    //           { name: 'Telerik', country: 'Bulgaria' },
-    //           { name: 'Google', country: 'USA' }
-    //         ]
-    //       );
-    //     }
-    //   )
-    //   .catch(error => console.log(error));
-
-    // firebase.getValue('/words')
-    //   .then(result => {
-    //     console.log(JSON.stringify(result));
-    //   })
-    //   .catch(error => console.log("Error: " + error));
+    firebase.auth().signInAnonymously()
+    .then(() => {
+      firebase.getValue('/companies')
+      .then(result => console.log(JSON.stringify(result)))
+      .catch(error => console.log("Error: " + error));
+    })
+    .catch(err => console.log("Login error: " + JSON.stringify(err)));
   }
 
   saveData() {
 
-    
+
     // to store an array of JSON objects
     firebase.setValue(
       '/companies',
@@ -177,3 +121,6 @@ export class HomeComponent implements OnInit {
   }
 }
 
+
+
+// : if request.auth != null
