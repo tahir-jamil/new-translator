@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { TNSPlayer } from 'nativescript-audio';
 import { RouterExtensions } from 'nativescript-angular/router';
+import { DataService } from '../data.service';
 const firebase = require("nativescript-plugin-firebase");
 const firebaseWebApi = require("nativescript-plugin-firebase/app");
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,24 +17,18 @@ export class HomeComponent implements OnInit {
   newUrlAudio = "";
   private _player: TNSPlayer;
   
+  userData;
 
-
-  languageData = [
-    { english: "chair", chinese: "椅子" },
-    { english: "second", chinese: "椅子" },
-    { english: "third", chinese: "椅子" },
-    { english: "forth", chinese: "椅子" }
-  ];
 
   searchBarheight;
 
-  constructor(private routerExtensions: RouterExtensions) {
+  constructor(private routerExtensions: RouterExtensions, private dataService: DataService) {
     this._player = new TNSPlayer();
   }
 
 
   ngOnInit() {
-
+    this.userData = this.dataService.data;
   }
 
 
@@ -97,7 +93,7 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  
+
   public togglePlay() {
     if (this._player.isAudioPlaying()) {
       this._player.pause();

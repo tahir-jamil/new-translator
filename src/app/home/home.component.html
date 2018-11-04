@@ -7,7 +7,7 @@
 <GridLayout rows="auto,*,auto" columns="*">
 	<!-- <SearchBar id="searchBar" hint="Search" text="" (clear)="onClear" (submit)="onSubmit" class="search-bar"></SearchBar> -->
 	<GridLayout row="1" colSpan="2" tkExampleTitle tkToggleNavButton>
-		<RadListView [items]="languageData">
+		<RadListView [items]="userData">
 			<ng-template tkListItemTemplate let-item="item">
 				<GridLayout class="itemWord" rows="auto,auto,auto" columns="auto,*,auto">
 					<GridLayout rows="auto" columns="*,*" borderRadius="5">
@@ -25,9 +25,10 @@
 					</GridLayout>
 
 					<GridLayout row="1" colSpan="3" class="image-size">
-						<Image row="2" stretch="aspectFill" src="https://imagenevp.com/wp-content/uploads/revslider/home-june-2016/imagen-logo-square.jpg"></Image>
+						<Image row="2" stretch="aspectFill" [src]="'~/images/' + item.img" ></Image>
 					</GridLayout>
 
+					
 					<Label row="2" col="2" text="Add to Favourite" class="text-right f-13 text-muted" textWrap="true"></Label>
 					
 				</GridLayout>
