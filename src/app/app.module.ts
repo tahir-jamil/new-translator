@@ -12,7 +12,7 @@ import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
 
 // Uncomment and add to NgModule imports if you need to use the HttpClient wrapper
 // import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
-
+import "nativescript-localstorage";
 @NgModule({
     bootstrap: [
         AppComponent

@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TNSPlayer } from 'nativescript-audio';
 import { RouterExtensions } from 'nativescript-angular/router';
 const firebase = require("nativescript-plugin-firebase");
-
-
+const firebaseWebApi = require("nativescript-plugin-firebase/app");
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -12,19 +11,10 @@ const firebase = require("nativescript-plugin-firebase");
 })
 export class HomeComponent implements OnInit {
 
-  playerOptions = {
-    audioFile: 'https://www.computerhope.com/jargon/m/example.mp3',
-    loop: false,
-    completeCallback: function () {
-      console.log('finished playing');
-    },
-    errorCallback: function (errorObject) {
-      console.log(JSON.stringify(errorObject));
-    },
-    infoCallback: function (args) {
-      console.log(JSON.stringify(args));
-    }
-  };
+  // https://www.computerhope.com/jargon/m/example.mp3
+  newUrlAudio = "";
+  private _player: TNSPlayer;
+  
 
 
   languageData = [
@@ -42,25 +32,35 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit() {
-   
+
   }
 
 
   getData() {
-    firebase.auth().signInAnonymously()
-    .then(() => {
-      firebase.getValue('/companies')
-      .then(result => console.log(JSON.stringify(result)))
-      .catch(error => console.log("Error: " + error));
-    })
-    .catch(err => console.log("Login error: " + JSON.stringify(err)));
+    // firebase.storage.getDownloadUrl({
+    //   // optional, can also be passed during init() as 'storageBucket' param so we can cache it
+    //   bucket: 'gs://translator-13fc2.appspot.com',
+    //   // the full path of an existing file in your Firebase storage
+    //   remoteFullPath: 'SampleAudio_0.4mb.mp3'
+    // }).then(
+    //     function (url) {
+    //       console.log("Remote URL: " + url);
+    //       if (url) {
+    //         setTimeout(() => {
+    //           this.stateAudioSound(url);
+    //         }, 300);
+    //       }
+    //     },
+    //     function (error) {
+    //       console.log("Error: " + error);
+    //     }
+    // );
+    this.stateAudioSound();
   }
 
   saveData() {
 
-
-    // to store an array of JSON objects
-    firebase.setValue(
+    firebase.push(
       '/companies',
       [
         { name: 'Telerik', country: 'Bulgaria' },
@@ -74,13 +74,21 @@ export class HomeComponent implements OnInit {
   onSubmit() { }
 
 
-
-  private _player: TNSPlayer;
-
-
   stateAudioSound() {
     this._player
-      .playFromUrl(this.playerOptions)
+      .playFromUrl({
+        audioFile: "https://soundcloud.com/muhammad-tahir-99/sampleaudio-04mb/s-CS4uV",
+        loop: false,
+        completeCallback: function () {
+          console.log('finished playing');
+        },
+        errorCallback: function (errorObject) {
+          console.log(JSON.stringify(errorObject));
+        },
+        infoCallback: function (args) {
+          console.log(JSON.stringify(args));
+        }
+      })
       .then(function (res) {
         console.log(res);
       })
@@ -89,6 +97,7 @@ export class HomeComponent implements OnInit {
       });
   }
 
+  
   public togglePlay() {
     if (this._player.isAudioPlaying()) {
       this._player.pause();
@@ -112,7 +121,7 @@ export class HomeComponent implements OnInit {
 
 
   favourite() {
-    this.routerExtensions.navigate(['/favorite'], {
+    this.routerExtensions.navigate(['/favourite'], {
       transition: {
         name: 'fade',
         curve: 'linear'
@@ -121,6 +130,3 @@ export class HomeComponent implements OnInit {
   }
 }
 
-
-
-// : if request.auth != null

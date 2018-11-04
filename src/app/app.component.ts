@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+const firebaseWebApi = require("nativescript-plugin-firebase/app");
 const firebase = require("nativescript-plugin-firebase");
 
 @Component({
@@ -8,8 +9,11 @@ const firebase = require("nativescript-plugin-firebase");
 })
 export class AppComponent implements OnInit {
     ngOnInit(): void {
+
         firebase.init({
-            persist: false
+            // storageBucket: "translator-13fc2.appspot.com",
+            // Optionally pass in properties for database, authentication and cloud messaging,
+            // see their respective docs.
         }).then(
             instance => {
                 console.log("firebase.init done");
@@ -19,5 +23,4 @@ export class AppComponent implements OnInit {
             }
         );
     }
-
 }

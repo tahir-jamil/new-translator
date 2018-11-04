@@ -4,19 +4,19 @@
 	</ActionItem>
 </ActionBar>
 
-<GridLayout rows="auto,*" columns="*">
-	<SearchBar id="searchBar" hint="Search" text="" (clear)="onClear" (submit)="onSubmit" class="search-bar"></SearchBar>
+<GridLayout rows="auto,*,auto" columns="*">
+	<!-- <SearchBar id="searchBar" hint="Search" text="" (clear)="onClear" (submit)="onSubmit" class="search-bar"></SearchBar> -->
 	<GridLayout row="1" colSpan="2" tkExampleTitle tkToggleNavButton>
 		<RadListView [items]="languageData">
 			<ng-template tkListItemTemplate let-item="item">
-				<GridLayout class="itemWord" rows="auto,auto" columns="auto,*,auto">
+				<GridLayout class="itemWord" rows="auto,auto,auto" columns="auto,*,auto">
 					<GridLayout rows="auto" columns="*,*" borderRadius="5">
 						<GridLayout (tap)="getData()" columns="auto,auto">
 							<Label [text]="item.english" textWrap="true" class="p-r-5"></Label>
 							<Label col="1" text="&#xe050;" (tap)="stateAudioSound()" class="mdiBottomBarIcons alignIcon f-25" textWrap="true"></Label>
 						</GridLayout>
 					</GridLayout>
-
+					
 					<GridLayout rows="auto" columns="*,*" col="2" borderRadius="5">
 						<GridLayout (tap)="saveData()" columns="auto,auto" horizontalAlignment="right">
 							<Label [text]="item.chinese" textWrap="true" class=" text-right p-r-5"></Label>
@@ -27,6 +27,9 @@
 					<GridLayout row="1" colSpan="3" class="image-size">
 						<Image row="2" stretch="aspectFill" src="https://imagenevp.com/wp-content/uploads/revslider/home-june-2016/imagen-logo-square.jpg"></Image>
 					</GridLayout>
+
+					<Label row="2" col="2" text="Add to Favourite" class="text-right f-13 text-muted" textWrap="true"></Label>
+					
 				</GridLayout>
 			</ng-template>
 		</RadListView>

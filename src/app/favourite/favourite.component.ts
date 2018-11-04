@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterExtensions } from 'nativescript-angular/router';
 
 @Component({
   selector: 'app-favourite',
@@ -9,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavouriteComponent implements OnInit {
 
-  constructor() { }
+  constructor(private routerExtensions: RouterExtensions) { }
 
   ngOnInit() {
   }
 
+  goback() {
+    this.routerExtensions.back();
+  }
+  
 }
