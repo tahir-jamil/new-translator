@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit {
 
 
   getData() {
+    
     // firebase.getValue('/companies')
     //   .then(result => console.log(JSON.stringify(result)))
     //   .catch(error => console.log("Error: " + error));
